@@ -87,7 +87,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                         <label for="db_password">Database Password:*</label>
-                        <input type="password" class="form-control" id="db_password" name="DB_PASSWORD" required>
+                        <input type="password" class="form-control" id="db_password" name="DB_PASSWORD">
                     </div>
                   </div>
 
