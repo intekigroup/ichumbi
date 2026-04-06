@@ -170,8 +170,24 @@ class InstallController extends Controller
             $input['APP_ENV'] = 'live';
 
             //Check for database details
-            $mysql_link = @mysqli_connect($input['DB_HOST'], $input['DB_USERNAME'], $input['DB_PASSWORD'], $input['DB_DATABASE'], $input['DB_PORT']);
-            if (mysqli_connect_errno()) {
+            try {
+                $mysql_link = @mysqli_connect(
+                    $input['DB_HOST'],
+                    $input['DB_USERNAME'],
+                    $input['DB_PASSWORD'],
+                    $input['DB_DATABASE'],
+                    $input['DB_PORT']
+                );
+            } catch (\mysqli_sql_exception $e) {
+                $msg = '<b>ERROR</b>: Failed to connect to MySQL: '.$e->getMessage();
+                $msg .= "<br/>Provide correct details for 'Database Host', 'Database Port', 'Database Name', 'Database Username', 'Database Password'.";
+
+                return redirect()
+                    ->back()
+                    ->with('error', $msg);
+            }
+
+            if (mysqli_connect_errno() || ! $mysql_link) {
                 $msg = '<b>ERROR</b>: Failed to connect to MySQL: '.mysqli_connect_error();
                 $msg .= "<br/>Provide correct details for 'Database Host', 'Database Port', 'Database Name', 'Database Username', 'Database Password'.";
 
