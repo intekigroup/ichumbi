@@ -17,7 +17,7 @@ class IsInstalled
     {
         $envPath = base_path('.env');
         if (! file_exists($envPath)) {
-            return redirect(url('/').'/install');
+            return redirect()->route('install.index');
         }
 
         return $next($request);
