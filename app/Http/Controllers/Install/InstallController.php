@@ -145,7 +145,7 @@ class InstallController extends Controller
                     'APP_NAME' => 'required',
                     'DB_DATABASE' => 'required',
                     'DB_USERNAME' => 'required',
-                    'DB_PASSWORD' => 'required',
+                    'DB_PASSWORD' => 'nullable',
                     'DB_HOST' => 'required',
                     'DB_PORT' => 'required',
                 ],
@@ -153,7 +153,6 @@ class InstallController extends Controller
                     'APP_NAME.required' => 'App Name is required',
                     'DB_DATABASE.required' => 'Database Name is required',
                     'DB_USERNAME.required' => 'Database Username is required',
-                    'DB_PASSWORD.required' => 'Database Password is required',
                     'DB_HOST.required' => 'Database Host is required',
                     'DB_PORT.required' => 'Database port is required',
                 ]
